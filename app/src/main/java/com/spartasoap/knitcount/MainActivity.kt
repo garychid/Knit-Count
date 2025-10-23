@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         val rootLayout = findViewById<RelativeLayout>(R.id.rootLayout)
         val resetButton = findViewById<Button>(R.id.resetButton)
         val decrementButton = findViewById<Button>(R.id.decrementButton)
+        val incrementButton = findViewById<Button>(R.id.incrementButton)
 
         rootLayout.setBackgroundColor(Color.parseColor("#DCEAFB")) // soft blue
 
@@ -41,16 +42,17 @@ class MainActivity : AppCompatActivity() {
         updateCounter()
         Toast.makeText(this, "Restored count: $counter", Toast.LENGTH_SHORT).show()
 
-        // Tap to increase
+        // Tap anywhere to increase
         rootLayout.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_DOWN) {
-                counter++
-                updateCounter()
-                prefs.edit().putInt("counterValue", counter).apply()
-                toneGenerator.startTone(ToneGenerator.TONE_PROP_BEEP, 150)
-                animateCounter()
+                incrementCounter(prefs)
                 true
             } else false
+        }
+
+        // Increment button
+        incrementButton.setOnClickListener {
+            incrementCounter(prefs)
         }
 
         // Decrement button
@@ -75,6 +77,14 @@ class MainActivity : AppCompatActivity() {
             toneGenerator.startTone(ToneGenerator.TONE_PROP_BEEP2, 10)
             animateCounter()
         }
+    }
+
+    private fun incrementCounter(prefs: android.content.SharedPreferences) {
+        counter++
+        updateCounter()
+        prefs.edit().putInt("counterValue", counter).apply()
+        toneGenerator.startTone(ToneGenerator.TONE_PROP_BEEP, 150)
+        animateCounter()
     }
 
     private fun updateCounter() {

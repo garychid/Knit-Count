@@ -3,7 +3,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:padding="32dp">
+    android:padding="32dp"
+    android:background="#DCEAFB">
+
+    <!-- App title banner -->
+    <TextView
+        android:id="@+id/titleBanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="40dp"
+        android:text="Sandy's Knit Counter"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="#2A4D69"
+        android:background="#FFFFFF"
+        android:padding="16dp"
+        android:elevation="4dp"
+        android:layout_marginBottom="20dp"
+        android:shadowColor="#888888"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="2" />
 
     <!-- Counter display -->
     <TextView
@@ -13,29 +35,47 @@
         android:layout_centerInParent="true"
         android:text="0"
         android:textSize="172sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="#000000" />
 
-    <!-- Decrement button -->
-    <Button
-        android:id="@+id/decrementButton"
-        android:layout_width="124dp"
-        android:layout_height="70dp"
-        android:text="−"
-        android:textSize="24sp"
-        android:layout_below="@id/counterTextView"
-        android:layout_toStartOf="@id/resetButton"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="40dp" />
-
-    <!-- Reset button -->
-    <Button
-        android:id="@+id/resetButton"
-        android:layout_width="124dp"
-        android:layout_height="70dp"
-        android:text="Reset"
-        android:textSize="18sp"
+    <!-- Bottom button row -->
+    <LinearLayout
+        android:id="@+id/buttonRow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/counterTextView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp" />
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <!-- Decrement button -->
+        <Button
+            android:id="@+id/decrementButton"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:text="−"
+            android:textSize="28sp"
+            android:layout_margin="10dp" />
+
+        <!-- Reset button -->
+        <Button
+            android:id="@+id/resetButton"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:text="Reset"
+            android:textSize="18sp"
+            android:layout_margin="10dp" />
+
+        <!-- Increment button -->
+        <Button
+            android:id="@+id/incrementButton"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:text="+"
+            android:textSize="28sp"
+            android:layout_margin="10dp" />
+
+    </LinearLayout>
 
 </RelativeLayout>
