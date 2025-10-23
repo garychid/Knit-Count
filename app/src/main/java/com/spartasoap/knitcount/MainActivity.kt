@@ -29,39 +29,41 @@ class MainActivity : AppCompatActivity() {
         counterTextView = findViewById(R.id.counterTextView)
         val rootLayout = findViewById<RelativeLayout>(R.id.rootLayout)
         val resetButton = findViewById<Button>(R.id.resetButton)
-        // To replace the background image (R.drawable.background_image) with a color you can choose in code,
-        // just remove the image line and use setBackgroundColor() instead.
-        // 🎨 Set background COLOR instead of image
-        // You can use a named color, Color.RED, or custom hex:
+        val decrementButton = findViewById<Button>(R.id.decrementButton)
+
         rootLayout.setBackgroundColor(Color.parseColor("#DCEAFB")) // soft blue
-        // Example alternatives:
-        // rootLayout.setBackgroundColor(Color.LTGRAY)
-        // rootLayout.setBackgroundColor(Color.parseColor("#FFF3E0")) // warm cream
 
         toneGenerator = ToneGenerator(AudioManager.STREAM_MUSIC, 100)
-
         val prefs = getSharedPreferences("KnitCountPrefs", Context.MODE_PRIVATE)
 
-        // Load saved counter value
+        // Load saved counter
         counter = prefs.getInt("counterValue", 0)
         updateCounter()
         Toast.makeText(this, "Restored count: $counter", Toast.LENGTH_SHORT).show()
 
-        // Tap anywhere to increase counter
+        // Tap to increase
         rootLayout.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_DOWN) {
                 counter++
                 updateCounter()
                 prefs.edit().putInt("counterValue", counter).apply()
-
-                // Beep
-                toneGenerator.startTone(ToneGenerator.TONE_PROP_BEEP, 400)
-
-                // Animation
+                toneGenerator.startTone(ToneGenerator.TONE_PROP_BEEP, 150)
                 animateCounter()
                 true
+            } else false
+        }
+
+        // Decrement button
+        decrementButton.setOnClickListener {
+            if (counter > 0) {
+                counter--
+                updateCounter()
+                prefs.edit().putInt("counterValue", counter).apply()
+                toneGenerator.startTone(ToneGenerator.TONE_PROP_BEEP, 100)
+                animateCounter()
             } else {
-                false
+                toneGenerator.startTone(ToneGenerator.TONE_PROP_NACK, 100)
+                Toast.makeText(this, "Already at zero", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -70,19 +72,16 @@ class MainActivity : AppCompatActivity() {
             counter = 0
             updateCounter()
             prefs.edit().putInt("counterValue", counter).apply()
-
             toneGenerator.startTone(ToneGenerator.TONE_PROP_BEEP2, 10)
-
-            // Animate on reset
             animateCounter()
         }
     }
 
     private fun updateCounter() {
         counterTextView.text = counter.toString()
-        counterTextView.setTextColor(Color.BLACK) // solid black text
+        counterTextView.setTextColor(Color.BLACK)
     }
-        // code below causes numbers to expand deflate - animation
+
     private fun animateCounter() {
         val scaleAnimation = ScaleAnimation(
             1.0f, 1.3f,
@@ -101,4 +100,3 @@ class MainActivity : AppCompatActivity() {
         toneGenerator.release()
     }
 }
-

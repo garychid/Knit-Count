@@ -5,6 +5,7 @@
     android:gravity="center"
     android:padding="32dp">
 
+    <!-- Counter display -->
     <TextView
         android:id="@+id/counterTextView"
         android:layout_width="wrap_content"
@@ -14,14 +15,27 @@
         android:textSize="172sp"
         android:textStyle="bold" />
 
+    <!-- Decrement button -->
+    <Button
+        android:id="@+id/decrementButton"
+        android:layout_width="124dp"
+        android:layout_height="70dp"
+        android:text="−"
+        android:textSize="24sp"
+        android:layout_below="@id/counterTextView"
+        android:layout_toStartOf="@id/resetButton"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="40dp" />
 
+    <!-- Reset button -->
     <Button
         android:id="@+id/resetButton"
         android:layout_width="124dp"
         android:layout_height="70dp"
+        android:text="Reset"
+        android:textSize="18sp"
         android:layout_below="@id/counterTextView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:text="Reset" />
+        android:layout_marginTop="40dp" />
 
 </RelativeLayout>
