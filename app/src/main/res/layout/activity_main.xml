@@ -8,11 +8,11 @@
     <TextView
         android:id="@+id/counterTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="241dp"
+        android:layout_centerInParent="true"
         android:text="0"
         android:textSize="172sp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true" />
+        android:textStyle="bold" />
 
 
     <Button

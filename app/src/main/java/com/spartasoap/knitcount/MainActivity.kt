@@ -87,10 +87,10 @@ class MainActivity : AppCompatActivity() {
         val scaleAnimation = ScaleAnimation(
             1.0f, 1.3f,
             1.0f, 1.3f,
-            Animation.RELATIVE_TO_SELF, 0.5f,
-            Animation.RELATIVE_TO_SELF, 0.5f
+            Animation.RELATIVE_TO_SELF, 0.7f,
+            Animation.RELATIVE_TO_SELF, 0.7f
         )
-        scaleAnimation.duration = 150
+        scaleAnimation.duration = 180
         scaleAnimation.repeatMode = Animation.REVERSE
         scaleAnimation.repeatCount = 1
         counterTextView.startAnimation(scaleAnimation)
