@@ -1,81 +1,209 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:padding="32dp"
-    android:background="#DCEAFB">
+    android:background="#DCEAFB"
+    android:fillViewport="true">
 
-    <!-- App title banner -->
-    <TextView
-        android:id="@+id/titleBanner"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="40dp"
-        android:text="Sandy's Knit Counter"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:textColor="#2A4D69"
-        android:background="#FFFFFF"
-        android:padding="16dp"
-        android:elevation="4dp"
-        android:layout_marginBottom="20dp"
-        android:shadowColor="#888888"
-        android:shadowDx="2"
-        android:shadowDy="2"
-        android:shadowRadius="2" />
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="24dp">
 
-    <!-- Counter display -->
-    <TextView
-        android:id="@+id/counterTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="241dp"
-        android:layout_centerInParent="true"
-        android:text="0"
-        android:textSize="172sp"
-        android:textStyle="bold"
-        android:textColor="#000000" />
-
-    <!-- Bottom button row -->
-    <LinearLayout
-        android:id="@+id/buttonRow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/counterTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <!-- Decrement button -->
-        <Button
-            android:id="@+id/decrementButton"
-            android:layout_width="100dp"
-            android:layout_height="70dp"
-            android:text="−"
+        <TextView
+            android:id="@+id/titleBanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:padding="16dp"
+            android:shadowColor="#888888"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="2"
+            android:text="Sandy's Knit Counter"
+            android:textColor="#2A4D69"
             android:textSize="28sp"
-            android:layout_margin="10dp" />
+            android:textStyle="bold" />
 
-        <!-- Reset button -->
-        <Button
-            android:id="@+id/resetButton"
-            android:layout_width="120dp"
-            android:layout_height="70dp"
-            android:text="Reset"
-            android:textSize="18sp"
-            android:layout_margin="10dp" />
+        <TextView
+            android:id="@+id/counterCountLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:gravity="center"
+            android:text="Counters on screen"
+            android:textColor="#2A4D69"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-        <!-- Increment button -->
-        <Button
-            android:id="@+id/incrementButton"
-            android:layout_width="100dp"
-            android:layout_height="70dp"
-            android:text="+"
-            android:textSize="28sp"
-            android:layout_margin="10dp" />
+        <RadioGroup
+            android:id="@+id/counterCountGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
+            <RadioButton
+                android:id="@+id/counterCountOne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1" />
+
+            <RadioButton
+                android:id="@+id/counterCountTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2" />
+
+            <RadioButton
+                android:id="@+id/counterCountThree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3" />
+
+            <RadioButton
+                android:id="@+id/counterCountFour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/counterPanelOne"
+            style="@style/CounterPanel">
+
+            <TextView
+                android:id="@+id/counterTitleOne"
+                style="@style/CounterLabel"
+                android:text="Counter 1" />
+
+            <TextView
+                android:id="@+id/counterTextViewOne"
+                style="@style/CounterValue"
+                android:text="0" />
+
+            <LinearLayout style="@style/CounterButtonRow">
+
+                <Button
+                    android:id="@+id/decrementButtonOne"
+                    style="@style/CounterButton"
+                    android:text="-" />
+
+                <Button
+                    android:id="@+id/resetButtonOne"
+                    style="@style/CounterResetButton"
+                    android:text="Reset" />
+
+                <Button
+                    android:id="@+id/incrementButtonOne"
+                    style="@style/CounterButton"
+                    android:text="+" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/counterPanelTwo"
+            style="@style/CounterPanel">
+
+            <TextView
+                android:id="@+id/counterTitleTwo"
+                style="@style/CounterLabel"
+                android:text="Counter 2" />
+
+            <TextView
+                android:id="@+id/counterTextViewTwo"
+                style="@style/CounterValue"
+                android:text="0" />
+
+            <LinearLayout style="@style/CounterButtonRow">
+
+                <Button
+                    android:id="@+id/decrementButtonTwo"
+                    style="@style/CounterButton"
+                    android:text="-" />
+
+                <Button
+                    android:id="@+id/resetButtonTwo"
+                    style="@style/CounterResetButton"
+                    android:text="Reset" />
+
+                <Button
+                    android:id="@+id/incrementButtonTwo"
+                    style="@style/CounterButton"
+                    android:text="+" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/counterPanelThree"
+            style="@style/CounterPanel">
+
+            <TextView
+                android:id="@+id/counterTitleThree"
+                style="@style/CounterLabel"
+                android:text="Counter 3" />
+
+            <TextView
+                android:id="@+id/counterTextViewThree"
+                style="@style/CounterValue"
+                android:text="0" />
+
+            <LinearLayout style="@style/CounterButtonRow">
+
+                <Button
+                    android:id="@+id/decrementButtonThree"
+                    style="@style/CounterButton"
+                    android:text="-" />
+
+                <Button
+                    android:id="@+id/resetButtonThree"
+                    style="@style/CounterResetButton"
+                    android:text="Reset" />
+
+                <Button
+                    android:id="@+id/incrementButtonThree"
+                    style="@style/CounterButton"
+                    android:text="+" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/counterPanelFour"
+            style="@style/CounterPanel">
+
+            <TextView
+                android:id="@+id/counterTitleFour"
+                style="@style/CounterLabel"
+                android:text="Counter 4" />
+
+            <TextView
+                android:id="@+id/counterTextViewFour"
+                style="@style/CounterValue"
+                android:text="0" />
+
+            <LinearLayout style="@style/CounterButtonRow">
+
+                <Button
+                    android:id="@+id/decrementButtonFour"
+                    style="@style/CounterButton"
+                    android:text="-" />
+
+                <Button
+                    android:id="@+id/resetButtonFour"
+                    style="@style/CounterResetButton"
+                    android:text="Reset" />
+
+                <Button
+                    android:id="@+id/incrementButtonFour"
+                    style="@style/CounterButton"
+                    android:text="+" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
-
-</RelativeLayout>
+</ScrollView>
